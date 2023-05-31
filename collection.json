@@ -21,8 +21,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"postman.setGlobalVariable(\"mint_session_id\",postman.getResponseCookie(\"mint-session-id\").value);"
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
 						],
 						"type": "text/javascript"
 					}
