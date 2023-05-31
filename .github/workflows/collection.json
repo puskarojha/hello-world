@@ -13,6 +13,52 @@
 				"url": "https://www.google.com"
 			},
 			"response": []
+		},
+		{
+			"name": "session/start [shümi-um1] Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"postman.setGlobalVariable(\"mint_session_id\",postman.getResponseCookie(\"mint-session-id\").value);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const jar = pm.cookies.jar();",
+							"",
+							"jar.clear('mvtc-services.vodafone.de', function (error) {",
+							"  if(error)",
+							"    console.log(\"Error clearing cookies: \"+error);",
+							"});",
+							"",
+							"console.log(\"clear cookies...\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"clientType\":\"Portal\",\n\t\"username\":\"shümi3-test1\",\n\t\"password\":\"Vodafone+123!\",\n    \"context\":\"webtt\",\n    \"targetURL\":\"http://www.vodafone.de/login\"\n}"
+				},
+				"url": "https://mvtc-services.vodafone.de/mint/rest/session/start"
+			},
+			"response": []
 		}
 	]
 }
