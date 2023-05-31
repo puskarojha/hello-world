@@ -5,10 +5,10 @@ on:
       - 'main'
 
 jobs:
-  build:
+  newman:
     runs-on: ubuntu-latest
     steps:
-      - name: run postman tests
-        uses: matt-ball/newman-action@master
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
         with:
           collection: collection.json
