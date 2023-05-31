@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "88eade4d-2e90-4540-82f9-99938dd62605",
+		"name": "TestGoogle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://www.google.com"
+			},
+			"response": []
+		}
+	]
+}
