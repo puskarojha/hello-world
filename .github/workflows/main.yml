@@ -1,6 +1,6 @@
 name: run Postman API tests
 on:
-  pull_request:
+  push:
     branches:
     - master
 
