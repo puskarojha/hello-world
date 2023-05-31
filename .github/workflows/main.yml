@@ -1,15 +1,27 @@
-name: Newman Run
-on:
-  pull_request:
+name: run Postman API tests
+on: 
+  push:
     branches:
-    - master
+      - 'main'
+      - 'feature/**'
+    paths-ignore:
+      - 'Postman Collections/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
 jobs:
-  newman:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: matt-ball/newman-action@master
+      - name: checkout
+        uses: puskarojha/hello-world
+
+      - name: start the app
+        run: |
+          docker run -d -p 3005:80 -v ${{ github.workspace }}/db.json:/data/db.json clue/json-server
+
+      - name: run postman tests
+        uses: matt-ball/newman-action@master
         with:
-          apiKey: ${{ secrets.postmanApiKey }}
-          collection: collection.json
-          environment: 5922408-228c7edd-fc15-4f68-9665-a35d7df6945b
+          collection: "Postman Collections/albums.json"
