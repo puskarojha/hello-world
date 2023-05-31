@@ -17,11 +17,7 @@ jobs:
       - name: checkout
         uses: puskarojha/hello-world
 
-      - name: start the app
-        run: |
-          docker run -d -p 3005:80 -v ${{ github.workspace }}/db.json:/data/db.json clue/json-server
-
       - name: run postman tests
         uses: matt-ball/newman-action@master
         with:
-          collection: "Postman Collections/albums.json"
+          collection: "collection.json"
