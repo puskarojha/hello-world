@@ -1,8 +1,8 @@
 name: run Postman API tests
-on: 
-  push:
+on:
+  pull_request:
     branches:
-      - 'main'
+    - master
 
 jobs:
   newman:
