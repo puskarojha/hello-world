@@ -1,14 +1,63 @@
-name: run Postman API tests
-on:
-  push:
-    branches:
-    - master
-
-jobs:
-  newman:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: matt-ball/newman-action@master
-        with:
-          collection: collection.json
+{
+	"info": {
+		"_postman_id": "88eade4d-2e90-4540-82f9-99938dd62605",
+		"name": "TestGoogle",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://www.google.com"
+			},
+			"response": []
+		},
+		{
+			"name": "session/start [shümi-um1] Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const jar = pm.cookies.jar();",
+							"",
+							"jar.clear('mvtc-services.vodafone.de', function (error) {",
+							"  if(error)",
+							"    console.log(\"Error clearing cookies: \"+error);",
+							"});",
+							"",
+							"console.log(\"clear cookies...\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"clientType\":\"Portal\",\n\t\"username\":\"shümi3-test1\",\n\t\"password\":\"Vodafone+123!\",\n    \"context\":\"webtt\",\n    \"targetURL\":\"http://www.vodafone.de/login\"\n}"
+				},
+				"url": "https://mvtc-services.vodafone.de/mint/rest/session/start"
+			},
+			"response": []
+		}
+	]
+}
