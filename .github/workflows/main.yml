@@ -11,4 +11,4 @@ jobs:
       - name: run postman tests
         uses: matt-ball/newman-action@master
         with:
-          collection: "collection.json"
+          collection: collection.json
