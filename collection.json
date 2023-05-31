@@ -56,7 +56,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"clientType\":\"Portal\",\n\t\"username\":\"shümi3-test1\",\n\t\"password\":\"Vodafone+123!\",\n    \"context\":\"webtt\",\n    \"targetURL\":\"http://www.vodafone.de/login\"\n}"
 				},
-				"url": "{{baseURL}}/session/start"
+				"url": "https://mvtc-services.vodafone.de/mint/rest/session/start"
 			},
 			"response": []
 		}
