@@ -9,9 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: puskarojha/hello-world
-
       - name: run postman tests
         uses: matt-ball/newman-action@master
         with:
